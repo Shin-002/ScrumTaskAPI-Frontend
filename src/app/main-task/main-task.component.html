@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-md-6">
+        <app-task-list></app-task-list>
+
+        <div *ngFor="let task of tasks">
+            {{ task.task }}
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <app-task-details></app-task-details>
+        <app-task-form></app-task-form>
+    </div>
+</div>
