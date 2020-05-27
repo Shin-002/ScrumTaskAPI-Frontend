@@ -1,1 +1,6 @@
-<p>task-list works!</p>
+<fa-icon [icon]="faTrash"></fa-icon>
+<fa-icon [icon]="faEdit"></fa-icon>
+
+<div *ngFor="let task of tasks" (click)="taskClicked(task)">
+    {{ task.task }}
+</div>

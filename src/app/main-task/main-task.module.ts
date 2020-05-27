@@ -6,6 +6,18 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
 import { ApiService } from '../api.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSortModule } from '@angular/material/sort';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule} from '@angular/material/input';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { from } from 'rxjs';
 
 const routes: Routes = [
   {path: 'tasks', component: MainTaskComponent}
@@ -17,6 +29,17 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    FontAwesomeModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatTableModule,
+    MatSelectModule,
+    MatInputModule,
+    MatBadgeModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     RouterModule,

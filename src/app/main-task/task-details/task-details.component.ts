@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../../api.service';
+import { Task } from '../../modeltypes';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-task-details',
@@ -7,6 +9,7 @@ import { ApiService } from '../../api.service';
   styleUrls: ['./task-details.component.css']
 })
 export class TaskDetailsComponent implements OnInit {
+  @Input() task: Task
 
   constructor(
     private apiService: ApiService

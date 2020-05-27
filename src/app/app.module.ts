@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'tasks'}
@@ -20,6 +21,7 @@ const routes: Routes = [
     MainTaskModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    BrowserAnimationsModule,
   ],
   exports: [
     RouterModule
