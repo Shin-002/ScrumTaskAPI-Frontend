@@ -4,3 +4,15 @@
 <div *ngFor="let task of tasks" (click)="taskClicked(task)">
     {{ task.task }}
 </div>
+
+<div class="form-groupe">
+    <select id="selectSprint" class="form-control" (change)=onChangeSelect($event.target.value)>
+        <ng-container *ngFor="let sprint of sprints">
+            <option [value]="sprint.id">{{ sprint.sprint }}</option>
+        </ng-container>
+    </select>
+</div>
+
+<div *ngFor="let task of tasks">
+    {{ task.task }}<fa-icon [icon]="faTrash" (click)="deleteTask(task)"></fa-icon>
+</div>

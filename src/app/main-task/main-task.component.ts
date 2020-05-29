@@ -18,6 +18,7 @@ export class MainTaskComponent implements OnInit {
   tags: Tag[] = [];
 
   selectedTask: Task = null
+  editedTask: any = null
 
   constructor(
     private apiService: ApiService,
@@ -55,7 +56,28 @@ export class MainTaskComponent implements OnInit {
 
   selectTask(task) {
     this.selectedTask = task
+    this.editedTask = null
     console.log(this.selectedTask)
+  }
+
+  editTask(task: Task) {
+    this.editedTask = task
+    this.selectedTask = null
+  }
+
+  createNewTask() {
+    this.editedTask = {targetsprint: {"id":1}, task: '', description: '', criteria: '', responsible: {"id":1}, estimate: '', targettag: {"id":1}, status: '1'}
+    this.selectedTask = null
+  }
+
+  deletedTask(task: Task) {
+    this.apiService.deleteTask(task.id).subscribe(
+      data => {
+        this.tasks = this.tasks.filter(tas=>tas.id !== task.id)
+        this.editedTask = null
+      },
+      error => console.log(error)
+    )
   }
 
 }

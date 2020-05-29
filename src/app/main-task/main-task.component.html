@@ -1,8 +1,9 @@
 <div class="row">
     <div class="col-md-6">
-        <app-task-list [tasks] = "tasks" (selectTask)="selectTask($event)"></app-task-list>
-       
-    </div>
+        <app-task-list [tasks] = "tasks" [sprints]="sprints" (selectTask)="selectTask($event)" (createNewTask)="createNewTask()" 
+            (editedTask)="editTask($event)" (deletedTask)="deletedTask($event)"
+        ></app-task-list>
+     </div>
 
     <div class="col-md-6">
         <app-task-details [task] = "this.selectedTask"></app-task-details>
