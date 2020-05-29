@@ -5,7 +5,8 @@ import { Sprint } from '../../modeltypes';
 import{ faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faThumbtack } from '@fortawesome/free-solid-svg-icons';
-import { from } from 'rxjs';
+import { Sort } from '@angular/material/sort';
+import { from, asapScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-task-list',
@@ -20,6 +21,7 @@ export class TaskListComponent implements OnInit {
   faThumbtack = faThumbtack
 
   @Input() tasks: Task[] = []
+  @Input() sortedData: Task[] = []
   @Input() sprints: Sprint[] = []
 
   @Output() selectTask = new EventEmitter<Task>()
@@ -48,6 +50,24 @@ export class TaskListComponent implements OnInit {
 
   deleteTask(task: Task) {
     this.deletedTask.emit(task)
+  }
+
+  sortData(sort: Sort) {
+    const tasks = this.tasks
+    if (!sort.active || sort.direction === '') {
+      this.sortedData = tasks
+      return
+    }
+    this.sortedData = tasks.sort ((a,b) => {
+      const asc = sort.direction == 'asc' ? 1 : -1;
+      switch (sort.active) {
+        case 'task': return (a.id < b.id ? 1 : -1) * asc;
+        case 'category': return (a.targettag.id < b.targettag.id ? 1 : -1) * asc;
+        case 'responsible': return (a.responsible.id < b.responsible.id ? 1 : -1) * asc;
+        case 'status': return (a.status < b.status ? 1 : -1) * asc;
+        default: return 0;
+      }
+    })
   }
 
   onChangeSelect(value) {
