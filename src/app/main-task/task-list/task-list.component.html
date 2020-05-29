@@ -5,14 +5,14 @@
     {{ task.task }}
 </div>
 
-<div class="form-groupe">
+<div class="form-group">
     <select id="selectSprint" class="form-control" (change)=onChangeSelect($event.target.value)>
         <ng-container *ngFor="let sprint of sprints">
-            <option [value]="sprint.id">{{ sprint.sprint }}</option>
+            <option [value]="sprint.id"> {{ sprint.sprint }} </option>
         </ng-container>
     </select>
 </div>
 
 <div *ngFor="let task of tasks">
-    {{ task.task }}<fa-icon [icon]="faTrash" (click)="deleteTask(task)"></fa-icon>
+    {{ task.task }} <fa-icon [icon]="faTrash" (click)="deleteTask(task)"></fa-icon>
 </div>
