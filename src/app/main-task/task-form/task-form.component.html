@@ -1,1 +1,35 @@
-<p>task-form works!</p>
+<div class="container">
+    <h3 class="mytitle text-center">Task ID: {{tasksim.id}} </h3>
+</div>
+
+<form [formGroup]="taskForm" (ngSubmit)="saveForm()">
+    <label>Sprint</label>
+    <br>
+    <div class="form-group">
+        <select id="selectSprint" class="form-control" formControlName="sprint_pk_id" (keydown.enter)="$event.preventDefault()">
+            <ng-container *ngFor="let sprint of sprints | keyvalue : asIsOrder">
+                <option *ngIf="sprint.value.id == tasksim.targetsprint.id" [ngValue]="sprint.value.id" selected> {{sprint.value.sprint }}</option>
+                <option *ngIf="sprint.value.id != tasksim.targetsprint.id" [ngValue]="sprint.value.id"> {{sprint.value.sprint }}</option>
+            </ng-container>
+        </select> 
+    </div>
+
+    <label>Task title</label>
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="task" (keydown.enter)="$event.preventDefault()">
+
+        <div *ngIf="taskForm.control.task.touched && (taskForm.controls.task.errors.longEnough || taskForm.controls.task.errors.required)" class="alert-danger">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <span *ngIf="taskForm.controls.task.errors.required">
+                Please enter task title.
+            </span>
+            <span *ngIf="taskForm.controls.task.errors.longEnough">
+                Task title must be at least 7 character long !
+            </span>
+        </div>
+    </div>
+
+
+
+
+</form>

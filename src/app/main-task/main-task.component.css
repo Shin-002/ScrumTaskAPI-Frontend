@@ -1,0 +1,6 @@
+#left {
+    margin-top: 50px;
+    width: 50%;
+    height: 80vh;
+    overflow-y: scroll;
+}
