@@ -34,9 +34,9 @@ export class TaskFormComponent implements OnInit {
       description: new FormControl(data.description, Validators.required),
       criteria: new FormControl(data.criteria, Validators.required),
       responsible_pk_id: new FormControl(data.responsible.id),
-      estimate: new FormControl(data.estimate, Validators.compose([IntValidator.integer])),
+      estimate: new FormControl(data.estimate, Validators.compose([Validators.required, IntValidator.integer])),
       tag_pk_id: new FormControl(data.targettag.id),
-      status: new FormControl(data.status), 
+      status: new FormControl(data.status),
     })
   }
 
@@ -47,8 +47,52 @@ export class TaskFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  SubmitButtonDisabled() {
+    if(
+      !this.taskForm.controls.task.errors.required &&
+      !this.taskForm.controls.task.errors.longEnough &&
+      !this.taskForm.controls.estimate.errors.required &&
+      !this.taskForm.controls.estimate.errors.integer &&
+      this.taskForm.controls.description.valid &&
+      this.taskForm.controls.criteria.valid
+      ){
+        return false
+      } else {
+        return true
+      }
+  }
+
   saveForm() {
-    return 0
+    if(this.id) {
+      this.apiService.updateTask(
+        this.id,
+        this.taskForm.value.sprint_pk_id,
+        this.taskForm.value.task,
+        this.taskForm.value.description,
+        this.taskForm.value.criteria,
+        this.taskForm.value.responsible_pk_id,
+        this.taskForm.value.estimate,
+        this.taskForm.value.tag_pk_id,
+        this.taskForm.value.status,
+      ).subscribe(
+        (result: Task) => console.log(result),
+        error => console.log(error)
+      )
+    } else {
+      this.apiService.createTask(
+        this.taskForm.value.sprint_pk_id,
+        this.taskForm.value.task,
+        this.taskForm.value.description,
+        this.taskForm.value.criteria,
+        this.taskForm.value.responsible_pk_id,
+        this.taskForm.value.estimate,
+        this.taskForm.value.tag_pk_id,
+        this.taskForm.value.status,
+      ).subscribe(
+        (result: Task) => console.log(result),
+        error => console.log(error)
+      )
+    }
   }
 
   asIsOrder() {
