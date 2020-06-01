@@ -7,9 +7,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'tasks'}
+  {path: '', pathMatch: 'full', redirectTo: 'authen'}
 ]
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     HttpClientModule,
     BrowserAnimationsModule,
+    FontAwesomeModule,
   ],
   exports: [
     RouterModule

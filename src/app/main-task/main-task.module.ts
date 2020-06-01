@@ -18,6 +18,7 @@ import { MatInputModule} from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
+import { SprintfilterPipe } from './sprintfilter.pipe';
 
 const routes: Routes = [
   {path: 'tasks', component: MainTaskComponent}
@@ -25,7 +26,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [MainTaskComponent, TaskListComponent, TaskFormComponent, TaskDetailsComponent],
+  declarations: [MainTaskComponent, TaskListComponent, TaskFormComponent, TaskDetailsComponent, SprintfilterPipe],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

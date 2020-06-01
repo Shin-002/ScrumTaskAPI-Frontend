@@ -9,3 +9,8 @@ h1 {
     font-size: 45px;
     font-family: "Gill Sans", sans-serif;
 }
+
+.customicon {
+    margin: 0px 30px;
+    font-size: 0.9;
+}

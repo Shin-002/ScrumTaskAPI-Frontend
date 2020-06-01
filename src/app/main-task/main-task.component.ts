@@ -80,4 +80,17 @@ export class MainTaskComponent implements OnInit {
     )
   }
 
+  taskCreated(task: Task) {
+    this.tasks.unshift(task)
+    this.editedTask=null
+  }
+
+  taskUpdated(task: Task) {
+    const indexup = this.tasks.findIndex(tas => tas.id === task.id)
+    if (indexup >= 0) {
+      this.tasks[indexup] = task
+    }
+    this.editedTask=null
+  }
+
 }

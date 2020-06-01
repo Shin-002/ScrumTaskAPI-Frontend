@@ -20,7 +20,7 @@
     <th mat-sort-header="status">Status</th>
     <br>
 
-    <div *ngFor="let task of sortedData" class="task-item">
+    <div *ngFor="let task of sortedData | sprintfilter: idsprint" class="task-item">
         <div class="card">
             <div class="card-body">
                 <label class="float-right"> {{task.responsible.username}}</label>

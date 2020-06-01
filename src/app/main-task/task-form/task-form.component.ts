@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../api.service';
 import { Task } from '../../modeltypes';
 import { User } from '../../modeltypes';
@@ -40,6 +40,9 @@ export class TaskFormComponent implements OnInit {
     })
   }
 
+  @Output() taskCreated = new EventEmitter<Task>()
+  @Output() taskUpdated = new EventEmitter<Task>()
+
   constructor(
     private apiService: ApiService
   ) { }
@@ -75,7 +78,7 @@ export class TaskFormComponent implements OnInit {
         this.taskForm.value.tag_pk_id,
         this.taskForm.value.status,
       ).subscribe(
-        (result: Task) => console.log(result),
+        (result: Task) => this.taskUpdated.emit(result),
         error => console.log(error)
       )
     } else {
@@ -89,7 +92,7 @@ export class TaskFormComponent implements OnInit {
         this.taskForm.value.tag_pk_id,
         this.taskForm.value.status,
       ).subscribe(
-        (result: Task) => console.log(result),
+        (result: Task) => this.taskCreated.emit(result),
         error => console.log(error)
       )
     }
