@@ -4,3 +4,9 @@
     height: 80vh;
     overflow-y: scroll;
 }
+
+.logout {
+    font-size: 3.0em;
+    color: dimgray;
+    cursor: pointer;
+}

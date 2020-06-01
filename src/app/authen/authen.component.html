@@ -13,7 +13,7 @@
                 <input matInput type="password" placeholder="Password" formControlName="password" required>
             </mat-form-field>
             <br>
-            <button mat-raised-button color="primary" [disabled]="SubmitButtonDisabled()">
+            <button mat-raised-button color="primary" [disabled] = "SubmitButtonDisabled()">
                 <span *ngIf="!newAccount">Login</span>
                 <span *ngIf="newAccount">Register</span>
             </button>

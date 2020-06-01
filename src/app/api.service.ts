@@ -54,12 +54,12 @@ export class ApiService {
 
   loginUser(authenData) {
     const body = JSON.stringify(authenData)
-    return this.httpClient.post('${this.rootUrl}authen/', body, {headers: this.headers})
+    return this.httpClient.post(`${this.rootUrl}authen/`, body, {headers: this.headers})
   }
 
   registerUser(authenData) {
     const body = JSON.stringify(authenData)
-    return this.httpClient.post('${this.rootUrl}api/users/', body, {headers: this.headers})
+    return this.httpClient.post(`${this.rootUrl}api/users/`, body, {headers: this.headers})
   }
 
   getAuthenHeaders() {
